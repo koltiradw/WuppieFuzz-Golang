@@ -6,8 +6,8 @@ package stringtab
 
 import (
 	"fmt"
-	"github.com/koltiradw/gcs/coverage/slicereader"
-	"github.com/koltiradw/gcs/coverage/uleb128"
+	"gcs/coverage/slicereader"
+	"gcs/coverage/uleb128"
 	"io"
 )
 

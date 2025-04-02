@@ -32,8 +32,8 @@ package cformat
 
 import (
 	"fmt"
-	"github.com/koltiradw/gcs/coverage"
-	"github.com/koltiradw/gcs/coverage/cmerge"
+	"gcs/coverage"
+	"gcs/coverage/cmerge"
 	"io"
 	"sort"
 	"text/tabwriter"
