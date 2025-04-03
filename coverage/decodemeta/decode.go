@@ -11,9 +11,9 @@ package decodemeta
 import (
 	"encoding/binary"
 	"fmt"
-	"gcs/coverage"
-	"gcs/coverage/slicereader"
-	"gcs/coverage/stringtab"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/stringtab"
 	"io"
 	"os"
 )

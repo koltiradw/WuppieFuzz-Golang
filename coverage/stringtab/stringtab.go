@@ -6,8 +6,8 @@ package stringtab
 
 import (
 	"fmt"
-	"gcs/coverage/slicereader"
-	"gcs/coverage/uleb128"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/uleb128"
 	"io"
 )
 

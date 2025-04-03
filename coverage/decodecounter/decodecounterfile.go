@@ -5,9 +5,9 @@
 package decodecounter
 
 import (
-	"gcs/coverage"
-	"gcs/coverage/slicereader"
-	"gcs/coverage/stringtab"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/stringtab"
 	"encoding/binary"
 	"fmt"
 	"io"

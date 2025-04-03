@@ -11,9 +11,9 @@ package decodemeta
 // separate self-contained meta-data section for each Go package.
 
 import (
-	"gcs/coverage"
-	"gcs/coverage/slicereader"
-	"gcs/coverage/stringtab"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/stringtab"
 	"bufio"
 	"bytes"
 	"crypto/md5"

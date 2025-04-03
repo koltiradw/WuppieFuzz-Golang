@@ -32,8 +32,8 @@ package cformat
 
 import (
 	"fmt"
-	"gcs/coverage"
-	"gcs/coverage/cmerge"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/cmerge"
 	"io"
 	"sort"
 	"text/tabwriter"
