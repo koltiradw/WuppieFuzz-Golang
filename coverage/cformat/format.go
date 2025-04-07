@@ -32,11 +32,12 @@ package cformat
 
 import (
 	"fmt"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/cmerge"
 	"io"
 	"sort"
 	"text/tabwriter"
+
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
+	"github.com/koltiradw/WuppieFuzz-Golang/coverage/cmerge"
 )
 
 type Formatter struct {
@@ -78,7 +79,7 @@ type fnfile struct {
 }
 
 type da struct {
-	line uint32
+	line  uint32
 	count uint32
 }
 
@@ -212,7 +213,6 @@ func (fm *Formatter) EmitLcov(w io.Writer) {
 	for importpath := range fm.pm {
 		pkgs = append(pkgs, importpath)
 	}
-	sort.Strings(pkgs)
 	lcov := map[string][]*da{}
 	for _, importpath := range pkgs {
 		p := fm.pm[importpath]
@@ -225,7 +225,10 @@ func (fm *Formatter) EmitLcov(w io.Writer) {
 			count := p.unitTable[u]
 			file := p.funcs[u.fnfid].file
 			for i := u.StLine; i <= u.EnLine; i++ {
-				lcov[file] = append(lcov[file], &da {i, count})
+				if count > 1 {
+					count = 1
+				}
+				lcov[file] = append(lcov[file], &da{i, count})
 			}
 		}
 	}
@@ -234,7 +237,7 @@ func (fm *Formatter) EmitLcov(w io.Writer) {
 		fmt.Fprintf(w, "TN:\n")
 		fmt.Fprintf(w, "SF:%s\n", file)
 		for _, info := range stmts {
-			fmt.Fprintf(w, "DA:%d,%d\n",info.line, info.count)
+			fmt.Fprintf(w, "DA:%d,%d\n", info.line, info.count)
 		}
 		fmt.Fprintf(w, "end_of_record\n")
 	}
