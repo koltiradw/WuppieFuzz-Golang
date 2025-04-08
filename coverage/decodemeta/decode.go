@@ -11,11 +11,12 @@ package decodemeta
 import (
 	"encoding/binary"
 	"fmt"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/stringtab"
 	"io"
 	"os"
+
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/stringtab"
 )
 
 // See comments in the encodecovmeta package for details on the format.

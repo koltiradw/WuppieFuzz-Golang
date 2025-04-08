@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	_ "github.com/koltiradw/WuppieFuzz-Golang"
+	_ "github.com/TNO-S3/WuppieFuzz-Golang"
 )
 
 // album represents data about a record album.

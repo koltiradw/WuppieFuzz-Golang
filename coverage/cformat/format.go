@@ -35,8 +35,8 @@ import (
 	"io"
 	"sort"
 
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/cmerge"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/cmerge"
 )
 
 type Formatter struct {

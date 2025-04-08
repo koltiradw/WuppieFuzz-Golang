@@ -3,19 +3,20 @@ package gcs
 import (
 	"bytes"
 	"encoding/binary"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/cformat"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/cmerge"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/decodecounter"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/decodemeta"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicewriter"
-	"io"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"os"
 	cover "runtime/coverage"
+
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/cformat"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/cmerge"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/decodecounter"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/decodemeta"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/slicewriter"
 )
 
 const HOST = "0.0.0.0"
@@ -161,61 +162,61 @@ func getLCOV() []byte {
 }
 
 func handleRequest(conn net.Conn) error {
-        buffer := make([]byte, 8)
-        _, err := conn.Read(buffer)
-        if err != nil {
-                return err
-        }
+	buffer := make([]byte, 8)
+	_, err := conn.Read(buffer)
+	if err != nil {
+		return err
+	}
 
-        cmd := buffer[5]
+	cmd := buffer[5]
 
-        if int(cmd) == BLOCK_CMD_DUMP {
-                lcov := getLCOV()
-                size := make([]byte, 4)
-                binary.LittleEndian.PutUint32(size, uint32(len(lcov)))
-                conn.Write(COVERAGE_INFO_RESPONSE)
-                conn.Write(size)
-                conn.Write(lcov)
-        }
+	if int(cmd) == BLOCK_CMD_DUMP {
+		lcov := getLCOV()
+		size := make([]byte, 4)
+		binary.LittleEndian.PutUint32(size, uint32(len(lcov)))
+		conn.Write(COVERAGE_INFO_RESPONSE)
+		conn.Write(size)
+		conn.Write(lcov)
+	}
 
-        reset_byte := buffer[7]
+	reset_byte := buffer[7]
 
-        if int(reset_byte) != 0 {
-                cover.ClearCounters()
-        }
+	if int(reset_byte) != 0 {
+		cover.ClearCounters()
+	}
 
-        conn.Write(CMD_OK_RESPONSE)
-        return nil
+	conn.Write(CMD_OK_RESPONSE)
+	return nil
 }
 
 func init() {
-        go startCoverageServer()
+	go startCoverageServer()
 }
 
 func startCoverageServer() {
-        listen, err := net.Listen(TYPE, HOST+":"+PORT)
-        if err != nil {
-                log.Fatal(err)
-                os.Exit(1)
-        }
+	listen, err := net.Listen(TYPE, HOST+":"+PORT)
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
 
-        defer listen.Close()
+	defer listen.Close()
 
-        conn, err := listen.Accept()
-        if err != nil {
-                log.Fatal(err)
-                os.Exit(1)
-        }
+	conn, err := listen.Accept()
+	if err != nil {
+		log.Fatal(err)
+		os.Exit(1)
+	}
 
-        for {
-                if err := handleRequest(conn); err != nil {
-                        fmt.Println("ERR: ", err)
-                        conn.Close()
-                        conn, err = listen.Accept()
-                        if err != nil {
-                                log.Fatal(err)
-                                os.Exit(1)
-                        }
-                }
-        }
+	for {
+		if err := handleRequest(conn); err != nil {
+			fmt.Println("ERR: ", err)
+			conn.Close()
+			conn, err = listen.Accept()
+			if err != nil {
+				log.Fatal(err)
+				os.Exit(1)
+			}
+		}
+	}
 }

@@ -6,9 +6,10 @@ package stringtab
 
 import (
 	"fmt"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/uleb128"
 	"io"
+
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/uleb128"
 )
 
 // This package implements string table writer and reader utilities,

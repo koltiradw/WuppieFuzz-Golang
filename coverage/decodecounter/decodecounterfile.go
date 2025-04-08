@@ -5,15 +5,16 @@
 package decodecounter
 
 import (
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/stringtab"
 	"encoding/binary"
 	"fmt"
 	"io"
 	"os"
 	"strconv"
 	"unsafe"
+
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/stringtab"
 )
 
 // This file contains helpers for reading counter data files created

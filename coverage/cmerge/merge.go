@@ -8,9 +8,10 @@ package cmerge
 // with merging of counter data for a given function.
 
 import (
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
 	"fmt"
 	"math"
+
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage"
 )
 
 type ModeMergePolicy uint8

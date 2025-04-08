@@ -11,15 +11,16 @@ package decodemeta
 // separate self-contained meta-data section for each Go package.
 
 import (
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/slicereader"
-	"github.com/koltiradw/WuppieFuzz-Golang/coverage/stringtab"
 	"bufio"
 	"bytes"
 	"crypto/md5"
 	"encoding/binary"
 	"fmt"
 	"os"
+
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/slicereader"
+	"github.com/TNO-S3/WuppieFuzz-Golang/coverage/stringtab"
 )
 
 // CoverageMetaFileReader provides state and methods for reading
